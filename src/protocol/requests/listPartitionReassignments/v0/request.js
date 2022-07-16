@@ -19,8 +19,8 @@ module.exports = ({ topics, timeout = 5000 }) => ({
   },
 })
 
-const encodeTopic = ({ topic, partitions }) => {
-  return new Encoder().writeString(topic).writeArray(partitions.map(encodePartition))
+const encodeTopic = ({ name, partitions }) => {
+  return new Encoder().writeString(name).writeArray(partitions.map(encodePartition))
 }
 
 const encodePartition = ({ partition }) => {

@@ -2,7 +2,7 @@ const Decoder = require('../../../decoder')
 const { failure, createErrorFromCode } = require('../../../error')
 
 /**
- * AlterPartitionReassignments Response (Version: 0) => throttle_time_ms error_code error_message [topics] TAG_BUFFER
+ * ListPartitionReassignments Response (Version: 0) => throttle_time_ms error_code error_message [topics] TAG_BUFFER
  * throttle_time_ms => INT32
  * error_code => INT16
  * error_message => COMPACT_NULLABLE_STRING
@@ -10,21 +10,21 @@ const { failure, createErrorFromCode } = require('../../../error')
  *  name => COMPACT_STRING
  *  partitions => partition [replicas] [adding_replicas] [removing_replicas] TAG_BUFFER
  *    partition => INT32
- *    replicas => INT32
- *    adding_replicas => INT32
- *    removing_replicas => INT32
+ *    replica => INT32
+ *    adding_replica => INT32
+ *    removing_replica => INT32
  */
 
 const decodeResponses = decoder => ({
-  topic: decoder.readString(),
+  name: decoder.readString(),
   partitions: decoder.readArray(decodePartitions),
 })
 
 const decodePartitions = decoder => ({
   partition: decoder.readInt32(),
-  replicas: decoder.readArray(decodeReplicas),
-  addingReplicas: decoder.readArray(decodeReplicas),
-  removingReplicas: decoder.readArray(decodeReplicas),
+  replica: decoder.readArray(decodeReplicas),
+  addingReplica: decoder.readArray(decodeReplicas),
+  removingReplica: decoder.readArray(decodeReplicas),
 })
 
 const decodeReplicas = decoder => ({

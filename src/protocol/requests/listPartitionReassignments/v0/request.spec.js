@@ -8,12 +8,12 @@ describe('Protocol > Requests > AlterPartitionReassignments > v0', () => {
       timeout: 5000,
       topics: [
         {
-          topic: 'test-topic-c8d8ca3d95495c6b900d',
-          partitionAssignment: [{ partition: 0, replicas: [0, 1, 2] }],
+          name: 'test-topic-c8d8ca3d95495c6b900d',
+          partitions: [{ partition: [0] }],
         },
         {
-          topic: 'test-topic-050fb2e6aed13a954288',
-          partitionAssignment: [{ partition: 0, replicas: [0, 1, 2] }],
+          name: 'test-topic-050fb2e6aed13a954288',
+          partitions: [{ partition: [0] }],
         },
       ],
     }).encode()
