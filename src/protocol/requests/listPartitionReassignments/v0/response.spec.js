@@ -4,7 +4,7 @@ describe('Protocol > Requests > AlterPartitionReassignments > v0', () => {
   test('response', async () => {
     const data = await decode(Buffer.from(require('../fixtures/v0_response.json')))
     expect(data).toEqual({
-      throttleTime: 500,
+      throttleTime: 0,
       errorCode: 0,
       responses: [
         {
